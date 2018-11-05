@@ -5,6 +5,8 @@ The src folder contains the source files, which consist of a function that proce
 
 The output folder will contain the results from the top_10_H1B_lists_2.py and is currently set to output top_10_occupations.txt and top_10_states.txt. 
 
+It should also be noted that this data set was tested on the ";" seperated data provided by insight on <a href = "https://drive.google.com/drive/folders/1Nti6ClUfibsXSQw5PUIWfVGSIrpuwyxf" > Google Drive </a>.
+
 # Tests
 Test_1: 
 The test provided with the problem that ensures correct formatting and output in a simple case. In this case the input data set has less than 10 dictionary entries.

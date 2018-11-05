@@ -37,10 +37,12 @@ def csv2Dict(inputFile, columnNames):
                 else:
                     # A dictionary is made in dictionaryList for each top 10 list that needs to be made.
                     for dictIndex, colIndex in enumerate(colIndices):
-                        if row[colIndex] in dictionaryList[dictIndex]:
-                            dictionaryList[dictIndex][row[colIndex]] += 1 
-                        else:
-                            dictionaryList[dictIndex][row[colIndex]] = 1
+                        #The if statement below ensures missing data is ignored, but the line count will still increase (if a string is empty the if statement will be false
+                        if row[colIndex]:
+                            if row[colIndex] in dictionaryList[dictIndex]:
+                                dictionaryList[dictIndex][row[colIndex]] += 1 
+                            else:
+                                dictionaryList[dictIndex][row[colIndex]] = 1
                     line_count += 1
         except UnicodeDecodeError:
             #There seems to be an error at the end of the larger data sets. This function ignores that error. 

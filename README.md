@@ -16,3 +16,17 @@ This test ensures that only 10 entries are provided per output file when there a
 
 Test_3:
 This test ensures that if a data point is missing from an entry, the entry is still counted as an application, but the null value string is not counted as a category that can enter the top 10 list.
+
+
+SQL answer:
+Assuming names of SOCName and State for the two fields, the following are 2 SQL querries that would yield the same lists:
+
+SELECT SOCName 'TOP_OCCUPATIONS', count(SOCName) 'NUMBER_CERTIFIED_APPLICATIONS', ROUND(count(SOCName),3)/(SELECT count(SOCName) FROM h1b_input)*100 'Percentage' FROM h1b_input
+GROUP BY SOCName
+ORDER BY count(SOCName) DESC, SOCName ASC
+LIMIT 10;
+
+SELECT State 'TOP_STATES', count(State) 'NUMBER_CERTIFIED_APPLICATIONS', ROUND(count(State),3)/(SELECT count(State) FROM h1b_input)*100 'Percentage' FROM h1b_input
+GROUP BY State
+ORDER BY count(State) DESC, State ASC
+LIMIT 10;
